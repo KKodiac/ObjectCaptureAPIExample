@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct HeadScannerApp: App {
+    @StateObject var model = CameraViewModel()
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(model: model)
         }
     }
 }

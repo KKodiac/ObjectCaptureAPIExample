@@ -11,6 +11,23 @@
 		0B8C51092918BDDC00B4F958 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8C51082918BDDC00B4F958 /* ContentView.swift */; };
 		0B8C510B2918BDDE00B4F958 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B8C510A2918BDDE00B4F958 /* Assets.xcassets */; };
 		0B8C510F2918BDDE00B4F958 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B8C510E2918BDDE00B4F958 /* Preview Assets.xcassets */; };
+		0B8C51172918C92100B4F958 /* CameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8C51162918C92100B4F958 /* CameraViewModel.swift */; };
+		0B8C511A2918CA8800B4F958 /* CaptureFolderState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8C51192918CA8800B4F958 /* CaptureFolderState.swift */; };
+		0B8C511D2918CC2900B4F958 /* CaptureInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8C511C2918CC2900B4F958 /* CaptureInfo.swift */; };
+		0BEECC4D291DE12800EBFBEC /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEECC4C291DE12800EBFBEC /* CameraView.swift */; };
+		0BEECC4F291DF43300EBFBEC /* TriggerEveryTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEECC4E291DF43300EBFBEC /* TriggerEveryTimer.swift */; };
+		0BEECC51291E0F2500EBFBEC /* PhotoCaptureDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEECC50291E0F2500EBFBEC /* PhotoCaptureDelegate.swift */; };
+		0BEECC53291E0F5400EBFBEC /* Capture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEECC52291E0F5400EBFBEC /* Capture.swift */; };
+		0BEECC55291E0FDD00EBFBEC /* CameraPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEECC54291E0FDD00EBFBEC /* CameraPreviewView.swift */; };
+		0BEECC57291E102A00EBFBEC /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEECC56291E102A00EBFBEC /* TimerView.swift */; };
+		0BEECC59291E104000EBFBEC /* InfoPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEECC58291E104000EBFBEC /* InfoPanelView.swift */; };
+		0BEECC5B291E110500EBFBEC /* CaptureGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEECC5A291E110500EBFBEC /* CaptureGalleryView.swift */; };
+		0BEECC5D291E111E00EBFBEC /* CaptureFoldersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEECC5C291E111E00EBFBEC /* CaptureFoldersView.swift */; };
+		0BEECC5F291E114300EBFBEC /* AsyncImageHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEECC5E291E114300EBFBEC /* AsyncImageHelpers.swift */; };
+		0BEECC61291E115D00EBFBEC /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEECC60291E115D00EBFBEC /* ImageLoader.swift */; };
+		0BEECC63291E199300EBFBEC /* PhotoSharingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEECC62291E199300EBFBEC /* PhotoSharingDelegate.swift */; };
+		0BEECC65291E204F00EBFBEC /* ShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEECC64291E204F00EBFBEC /* ShareView.swift */; };
+		0BEECC67291E2F8E00EBFBEC /* ShareFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BEECC66291E2F8E00EBFBEC /* ShareFile.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +37,23 @@
 		0B8C510A2918BDDE00B4F958 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0B8C510C2918BDDE00B4F958 /* HeadScanner.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HeadScanner.entitlements; sourceTree = "<group>"; };
 		0B8C510E2918BDDE00B4F958 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		0B8C51162918C92100B4F958 /* CameraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewModel.swift; sourceTree = "<group>"; };
+		0B8C51192918CA8800B4F958 /* CaptureFolderState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureFolderState.swift; sourceTree = "<group>"; };
+		0B8C511C2918CC2900B4F958 /* CaptureInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureInfo.swift; sourceTree = "<group>"; };
+		0BEECC4C291DE12800EBFBEC /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		0BEECC4E291DF43300EBFBEC /* TriggerEveryTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriggerEveryTimer.swift; sourceTree = "<group>"; };
+		0BEECC50291E0F2500EBFBEC /* PhotoCaptureDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCaptureDelegate.swift; sourceTree = "<group>"; };
+		0BEECC52291E0F5400EBFBEC /* Capture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Capture.swift; sourceTree = "<group>"; };
+		0BEECC54291E0FDD00EBFBEC /* CameraPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreviewView.swift; sourceTree = "<group>"; };
+		0BEECC56291E102A00EBFBEC /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		0BEECC58291E104000EBFBEC /* InfoPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPanelView.swift; sourceTree = "<group>"; };
+		0BEECC5A291E110500EBFBEC /* CaptureGalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureGalleryView.swift; sourceTree = "<group>"; };
+		0BEECC5C291E111E00EBFBEC /* CaptureFoldersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureFoldersView.swift; sourceTree = "<group>"; };
+		0BEECC5E291E114300EBFBEC /* AsyncImageHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageHelpers.swift; sourceTree = "<group>"; };
+		0BEECC60291E115D00EBFBEC /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		0BEECC62291E199300EBFBEC /* PhotoSharingDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSharingDelegate.swift; sourceTree = "<group>"; };
+		0BEECC64291E204F00EBFBEC /* ShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareView.swift; sourceTree = "<group>"; };
+		0BEECC66291E2F8E00EBFBEC /* ShareFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareFile.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +86,10 @@
 		0B8C51052918BDDC00B4F958 /* HeadScanner */ = {
 			isa = PBXGroup;
 			children = (
+				0BEECC4B291DE11900EBFBEC /* View */,
+				0B8C511B2918CC1D00B4F958 /* Model */,
+				0B8C51182918CA6C00B4F958 /* Helper */,
+				0B8C51152918C91200B4F958 /* ViewModel */,
 				0B8C51062918BDDC00B4F958 /* HeadScannerApp.swift */,
 				0B8C51082918BDDC00B4F958 /* ContentView.swift */,
 				0B8C510A2918BDDE00B4F958 /* Assets.xcassets */,
@@ -67,6 +105,51 @@
 				0B8C510E2918BDDE00B4F958 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		0B8C51152918C91200B4F958 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				0B8C51162918C92100B4F958 /* CameraViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		0B8C51182918CA6C00B4F958 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				0B8C51192918CA8800B4F958 /* CaptureFolderState.swift */,
+				0BEECC4E291DF43300EBFBEC /* TriggerEveryTimer.swift */,
+				0BEECC5E291E114300EBFBEC /* AsyncImageHelpers.swift */,
+				0BEECC60291E115D00EBFBEC /* ImageLoader.swift */,
+				0BEECC66291E2F8E00EBFBEC /* ShareFile.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		0B8C511B2918CC1D00B4F958 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0B8C511C2918CC2900B4F958 /* CaptureInfo.swift */,
+				0BEECC50291E0F2500EBFBEC /* PhotoCaptureDelegate.swift */,
+				0BEECC52291E0F5400EBFBEC /* Capture.swift */,
+				0BEECC62291E199300EBFBEC /* PhotoSharingDelegate.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0BEECC4B291DE11900EBFBEC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0BEECC4C291DE12800EBFBEC /* CameraView.swift */,
+				0BEECC54291E0FDD00EBFBEC /* CameraPreviewView.swift */,
+				0BEECC56291E102A00EBFBEC /* TimerView.swift */,
+				0BEECC58291E104000EBFBEC /* InfoPanelView.swift */,
+				0BEECC5A291E110500EBFBEC /* CaptureGalleryView.swift */,
+				0BEECC5C291E111E00EBFBEC /* CaptureFoldersView.swift */,
+				0BEECC64291E204F00EBFBEC /* ShareView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,8 +222,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B8C511A2918CA8800B4F958 /* CaptureFolderState.swift in Sources */,
+				0BEECC5B291E110500EBFBEC /* CaptureGalleryView.swift in Sources */,
+				0BEECC65291E204F00EBFBEC /* ShareView.swift in Sources */,
+				0BEECC5F291E114300EBFBEC /* AsyncImageHelpers.swift in Sources */,
+				0B8C511D2918CC2900B4F958 /* CaptureInfo.swift in Sources */,
+				0BEECC55291E0FDD00EBFBEC /* CameraPreviewView.swift in Sources */,
+				0BEECC4F291DF43300EBFBEC /* TriggerEveryTimer.swift in Sources */,
+				0BEECC67291E2F8E00EBFBEC /* ShareFile.swift in Sources */,
+				0BEECC61291E115D00EBFBEC /* ImageLoader.swift in Sources */,
+				0BEECC5D291E111E00EBFBEC /* CaptureFoldersView.swift in Sources */,
+				0BEECC63291E199300EBFBEC /* PhotoSharingDelegate.swift in Sources */,
+				0BEECC53291E0F5400EBFBEC /* Capture.swift in Sources */,
+				0BEECC59291E104000EBFBEC /* InfoPanelView.swift in Sources */,
 				0B8C51092918BDDC00B4F958 /* ContentView.swift in Sources */,
+				0BEECC57291E102A00EBFBEC /* TimerView.swift in Sources */,
+				0BEECC4D291DE12800EBFBEC /* CameraView.swift in Sources */,
 				0B8C51072918BDDC00B4F958 /* HeadScannerApp.swift in Sources */,
+				0BEECC51291E0F2500EBFBEC /* PhotoCaptureDelegate.swift in Sources */,
+				0B8C51172918C92100B4F958 /* CameraViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,6 +369,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "App uses the camera to take photos and preview video.";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -287,7 +388,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.seanhong2000.KKodiac.HeadScanner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -307,6 +410,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "App uses the camera to take photos and preview video.";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -325,7 +429,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.seanhong2000.KKodiac.HeadScanner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

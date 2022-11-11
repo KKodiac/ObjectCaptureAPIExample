@@ -8,19 +8,20 @@
 import SwiftUI
 
 struct ContentView: View {
+    @ObservedObject var model: CameraViewModel
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        ZStack {
+            Color.black.edgesIgnoringSafeArea(.all)
+            CameraView(model: model)
         }
-        .padding()
+        .environment(\.colorScheme, .dark)
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
+    @StateObject private static var model = CameraViewModel()
     static var previews: some View {
-        ContentView()
+        ContentView(model: model)
     }
 }
