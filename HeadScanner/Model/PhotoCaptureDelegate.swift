@@ -104,10 +104,8 @@ extension PhotoCaptureProcessor: AVCapturePhotoCaptureDelegate {
             photoData = photo
         }
         
-        // Cache the depth data, if it exists, as a disparity map.
         logger.log("DidFinishProcessingPhoto: photo=\(String(describing: photo))")
-        if let depthData = photo.depthData?.converting(toDepthDataType:
-                                                        kCVPixelFormatType_DisparityFloat32),
+        if let depthData = photo.depthData?.converting(toDepthDataType: kCVPixelFormatType_DisparityFloat32),
            let colorSpace = CGColorSpace(name: CGColorSpace.linearGray) {
             let depthImage = CIImage( cvImageBuffer: depthData.depthDataMap,
                                       options: [ .auxiliaryDisparity: true ] )

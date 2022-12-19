@@ -30,6 +30,9 @@ class CameraViewModel: ObservableObject {
         /// image every specified interval.
         case automatic(everySecs: Double)
     }
+    
+    /// Resolution for LiDAR video output
+    private let prefferedWidthResolution = 1920
 
     /// This property holds a reference to the most recently captured image and its metadata. The app
     /// uses this to populate the thumbnail view.
@@ -283,6 +286,7 @@ class CameraViewModel: ObservableObject {
         case cantCreateOutputDirectory
         case notAuthorized
         case configurationFailed
+        case requiredFormatUnavailable
     }
 
     private enum SetupError: Error {
@@ -498,7 +502,7 @@ class CameraViewModel: ObservableObject {
 
         do {
             let videoDeviceInput = try AVCaptureDeviceInput(
-                device: getVideoDeviceForPhotogrammetry())
+                device: getVideoDeviceForLiDARCapture())
 
             if session.canAddInput(videoDeviceInput) {
                 session.addInput(videoDeviceInput)
@@ -549,30 +553,65 @@ class CameraViewModel: ObservableObject {
     }
 
     /// This method checks for a depth-capable dual rear camera and, if found, returns an `AVCaptureDevice`.
-    private func getVideoDeviceForPhotogrammetry() throws -> AVCaptureDevice {
+    private func getVideoDeviceForLiDARCapture() throws -> AVCaptureDevice {
         var defaultVideoDevice: AVCaptureDevice?
-
-        // Specify dual camera to get access to depth data.
-        if let dualCameraDevice = AVCaptureDevice.default(.builtInDualCamera, for: .video,
-                                                          position: .back) {
-            logger.log(">>> Got back dual camera!")
-            defaultVideoDevice = dualCameraDevice
-        } else if let dualWideCameraDevice = AVCaptureDevice.default(.builtInDualWideCamera,
-                                                                for: .video,
-                                                                position: .back) {
-            logger.log(">>> Got back dual wide camera!")
-            defaultVideoDevice = dualWideCameraDevice
-       } else if let backWideCameraDevice = AVCaptureDevice.default(.builtInWideAngleCamera,
-                                                                     for: .video,
-                                                                     position: .back) {
-            logger.log(">>> Can't find a depth-capable camera: using wide back camera!")
-            defaultVideoDevice = backWideCameraDevice
+        
+        if let lidarCameraDevice = AVCaptureDevice.default(.builtInLiDARDepthCamera, for: .video, position: .back) {
+            logger.log(">>> Got LiDAR Camera!")
+            defaultVideoDevice = lidarCameraDevice
         }
-
+        else {
+            logger.error("LiDAR depth camera is unavailable")
+            throw SessionSetupError.configurationFailed
+        }
+//
+//        // Specify dual camera to get access to depth data.
+//        if let dualCameraDevice = AVCaptureDevice.default(.builtInDualCamera, for: .video,
+//                                                          position: .back) {
+//            logger.log(">>> Got back dual camera!")
+//            defaultVideoDevice = dualCameraDevice
+//        } else if let dualWideCameraDevice = AVCaptureDevice.default(.builtInDualWideCamera,
+//                                                                for: .video,
+//                                                                position: .back) {
+//            logger.log(">>> Got back dual wide camera!")
+//            defaultVideoDevice = dualWideCameraDevice
+//       } else if let backWideCameraDevice = AVCaptureDevice.default(.builtInWideAngleCamera,
+//                                                                     for: .video,
+//                                                                     position: .back) {
+//            logger.log(">>> Can't find a depth-capable camera: using wide back camera!")
+//            defaultVideoDevice = backWideCameraDevice
+//        }
+//
         guard let videoDevice = defaultVideoDevice else {
             logger.error("Back video device is unavailable.")
             throw SessionSetupError.configurationFailed
         }
+        
+        guard let format = (videoDevice.formats.last { format in
+            format.formatDescription.dimensions.width == prefferedWidthResolution &&
+            format.formatDescription.mediaSubType.rawValue == kCVPixelFormatType_420YpCbCr8BiPlanarFullRange &&
+            !format.isVideoBinned &&
+            !format.supportedDepthDataFormats.isEmpty
+        }) else {
+            throw SessionSetupError.requiredFormatUnavailable
+        }
+        
+        guard let depthFormat = (format.supportedDepthDataFormats.last { depthFormat in
+            depthFormat.formatDescription.mediaSubType.rawValue == kCVPixelFormatType_DepthFloat16
+        }) else {
+            throw SessionSetupError.requiredFormatUnavailable
+        }
+        
+        try videoDevice.lockForConfiguration()
+        
+        videoDevice.activeFormat = format
+        videoDevice.activeDepthDataFormat = depthFormat
+        
+        videoDevice.unlockForConfiguration()
+        
+        logger.log("Selected video format: \(videoDevice.activeFormat)")
+        logger.log("Selected depth format: \(String(describing: videoDevice.activeDepthDataFormat))")
+        
         return videoDevice
     }
 }

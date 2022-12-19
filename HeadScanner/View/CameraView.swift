@@ -15,52 +15,52 @@ struct CameraView: View {
     @ObservedObject var model: CameraViewModel
     @State private var showInfo: Bool = false
     
-    let aspectRatio: CGFloat = 4.0 / 3.0
+    let aspectRatio: CGFloat = 1.3
     let previewCornerRadius: CGFloat = 15.0
     
     var body: some View {
-        NavigationView {
-            GeometryReader { geometryReader in
-                // Place the CameraPreviewView at the bottom of the stack.
-                ZStack {
-                    Color.black.edgesIgnoringSafeArea(.all)
+//        NavigationView {
+//
+//            .navigationTitle(Text("Scan"))
+//            .navigationBarTitle("Scan")
+//            .navigationBarHidden(true)
+//            .navigationBarTitleDisplayMode(.inline)
+//        }
+        GeometryReader { geometryReader in
+            // Place the CameraPreviewView at the bottom of the stack.
+            ZStack {
+                Color.black.edgesIgnoringSafeArea(.all)
+                
+                // Center the preview view vertically. Place a clip frame
+                // around the live preview and round the corners.
+                VStack {
+                    Spacer()
+                    CameraPreviewView(session: model.session)
+                        .frame(width: UIScreen.main.bounds.width / aspectRatio,
+                               height: UIScreen.main.bounds.height / aspectRatio,
+                               alignment: .center)
+                        .clipShape(RoundedRectangle(cornerRadius: previewCornerRadius))
+                        .onAppear { model.startSession() }
+                        .onDisappear { model.pauseSession() }
+                        .overlay(
+                            Image("ObjectReticle")
+                                .resizable()
+                                .fixedSize()
+                                .padding(.all))
                     
-                    // Center the preview view vertically. Place a clip frame
-                    // around the live preview and round the corners.
-                    VStack {
-                        Spacer()
-                        CameraPreviewView(session: model.session)
-                            .frame(width: geometryReader.size.width,
-                                   height: geometryReader.size.width * aspectRatio,
-                                   alignment: .center)
-                            .clipShape(RoundedRectangle(cornerRadius: previewCornerRadius))
-                            .onAppear { model.startSession() }
-                            .onDisappear { model.pauseSession() }
-                            .overlay(
-                                Image("ObjectReticle")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .padding(.all))
-                        
-                        Spacer()
+                }
+                
+                VStack {
+                    // The app shows this view when showInfo is true.
+                    ScanToolbarView(model: model, showInfo: $showInfo).padding(.horizontal)
+                    if showInfo {
+                        InfoPanelView(model: model)
+                            .padding(.horizontal).padding(.top)
                     }
-                    
-                    VStack {
-                        // The app shows this view when showInfo is true.
-                        ScanToolbarView(model: model, showInfo: $showInfo).padding(.horizontal)
-                        if showInfo {
-                            InfoPanelView(model: model)
-                                .padding(.horizontal).padding(.top)
-                        }
-                        Spacer()
-                        CaptureButtonPanelView(model: model, width: geometryReader.size.width)
-                    }
+                    Spacer()
+                    CaptureButtonPanelView(model: model, width: geometryReader.size.width)
                 }
             }
-            .navigationTitle(Text("Scan"))
-            .navigationBarTitle("Scan")
-            .navigationBarHidden(true)
-            .navigationBarTitleDisplayMode(.inline)
         }
     }
 }
