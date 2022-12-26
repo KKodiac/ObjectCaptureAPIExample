@@ -58,21 +58,23 @@ struct CaptureGalleryView: View {
             }
             .frame(width: 0, height: 0)
             .disabled(true)
-            
-            GeometryReader { geometryReader in
-                ScrollView() {
-                    ShareView(model: model)
-                    LazyVGrid(columns: portraitLayout, spacing: columnSpacing) {
-                        ForEach(captureFolderState.captures, id: \.id) { captureInfo in
-                            GalleryCell(captureInfo: captureInfo,
-                                        cellWidth: geometryReader.size.width / 3,
-                                        cellHeight: geometryReader.size.width / 3,
-                                        zoomedCapture: $zoomedCapture)
+            VStack {
+                ShareView(model: model, observing: captureFolderState).padding()
+                GeometryReader { geometryReader in
+                    ScrollView() {
+                        LazyVGrid(columns: portraitLayout, spacing: columnSpacing) {
+                            ForEach(captureFolderState.captures, id: \.id) { captureInfo in
+                                GalleryCell(captureInfo: captureInfo,
+                                            cellWidth: geometryReader.size.width / 3,
+                                            cellHeight: geometryReader.size.width / 3,
+                                            zoomedCapture: $zoomedCapture)
+                            }
                         }
                     }
                 }
+                .blur(radius: zoomedCapture != nil ? 20 : 0)
             }
-            .blur(radius: zoomedCapture != nil ? 20 : 0)
+            
             
             if zoomedCapture != nil {
                 ZStack(alignment: .top) {

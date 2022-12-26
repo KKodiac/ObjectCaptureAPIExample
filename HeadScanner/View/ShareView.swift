@@ -6,12 +6,14 @@
 //
 
 import SwiftUI
+import os
 
+private let logger = Logger(subsystem: "com.seanhong.KKodiac.HeadScanner",
+                            category: "ShareView")
 struct ShareView: View {
     @State private var isActivityPresented = false
     @ObservedObject var model: CameraViewModel
     @ObservedObject var captureFolderState: CaptureFolderState
-
     let usingCurrentCaptureFolder: Bool
     
     init(model: CameraViewModel) {
@@ -30,12 +32,14 @@ struct ShareView: View {
     var body: some View {
         Button("Send to Macbook for processing!") {
             self.isActivityPresented = true
+            logger.log("Current folder \(String(describing: captureFolderState.captureDir?.lastPathComponent))")
         }.sheet(isPresented: $isActivityPresented) {
             ActivityView(activityItems: [captureFolderState.captureDir!], isPresented: $isActivityPresented)
                 .presentationDetents([.fraction(0.0)])
         }
     }
 }
+
 struct ActivityView: UIViewControllerRepresentable {
     var activityItems: [URL]
     var applicationActivities: [UIActivity]? = nil
@@ -54,7 +58,6 @@ struct ActivityView: UIViewControllerRepresentable {
 class ActivityViewWrapper: UIViewController {
     var activityItems: [URL]
     var applicationActivities: [UIActivity]?
-
     var isPresented: Binding<Bool>
     
     var archiveUrl: URL?
@@ -63,6 +66,7 @@ class ActivityViewWrapper: UIViewController {
 
     init(activityItems: [URL], applicationActivities: [UIActivity]? = nil, isPresented: Binding<Bool>) {
         self.activityItems = activityItems
+        
         self.applicationActivities = applicationActivities
         self.isPresented = isPresented
         super.init(nibName: nil, bundle: nil)
@@ -93,6 +97,7 @@ class ActivityViewWrapper: UIViewController {
             if !isActivityPresented {
                 if let archiveUrl = archiveUrl {
                     let controller = UIActivityViewController(activityItems: activityItems, applicationActivities: applicationActivities)
+                    controller.popoverPresentationController?.sourceView = self.view
                     controller.excludedActivityTypes = [.addToReadingList, .assignToContact, .openInIBooks, .postToVimeo, .postToWeibo, .postToFlickr, .postToTwitter, .postToFacebook, .postToTencentWeibo]
                     controller.completionWithItemsHandler = { (activityType, completed, _, _) in
                         self.isPresented.wrappedValue = false
