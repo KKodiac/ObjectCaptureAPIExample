@@ -111,7 +111,7 @@ class CameraViewModel: ObservableObject {
     static let maxPhotosAllowed = 250
     static let recommendedMinPhotos = 30
     static let recommendedMaxPhotos = 200
-    static let defaultAutomaticCaptureIntervalSecs: Double = 3.0
+    static let defaultAutomaticCaptureIntervalSecs: Double = 0.5
 
     init() {
         session = AVCaptureSession()

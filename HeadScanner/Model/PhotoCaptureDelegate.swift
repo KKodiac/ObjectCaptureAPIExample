@@ -73,7 +73,7 @@ extension PhotoCaptureProcessor: AVCapturePhotoCaptureDelegate {
     func photoOutput(_ output: AVCapturePhotoOutput,
                      willCapturePhotoFor resolvedSettings: AVCaptureResolvedPhotoSettings) {
         willCapturePhotoAnimation()
-        
+        AudioServicesDisposeSystemSoundID(1108)
         // Retrieve the gravity vector at capture time.
         if motionManager.isDeviceMotionActive {
             gravity = motionManager.deviceMotion?.gravity
