@@ -340,11 +340,15 @@ class CameraViewModel: ObservableObject {
         /// This property retrieves and stores the video preview layer's video orientation on the main
         /// queue before starting the session queue. This ensures that UI elements can be accessed on
         /// the main thread.
-        let videoPreviewLayerOrientation = session.connections[0].videoOrientation
-
+        let videoPreviewLayerOrientation = session.connections
+        logger.log("Orientation list \(videoPreviewLayerOrientation.debugDescription)")
         sessionQueue.async {
             if let photoOutputConnection = self.photoOutput.connection(with: .video) {
-                photoOutputConnection.videoOrientation = videoPreviewLayerOrientation
+                if UIDevice.current.userInterfaceIdiom == .pad {
+                    photoOutputConnection.videoOrientation = .landscapeRight
+                } else if UIDevice.current.userInterfaceIdiom == .phone {
+                    photoOutputConnection.videoOrientation = .portrait
+                }
             }
             var photoSettings = AVCapturePhotoSettings()
 

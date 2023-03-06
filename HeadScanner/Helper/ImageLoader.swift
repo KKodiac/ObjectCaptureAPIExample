@@ -92,6 +92,9 @@ class ImageLoader {
             logger.error("\(msg)")
             throw Error.noThumbnail
         }
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            return UIImage(cgImage: cgImage, scale: 1.0, orientation: .up)
+        }
         return UIImage(cgImage: cgImage, scale: 1.0, orientation: .right)
     }
     
@@ -106,6 +109,9 @@ class ImageLoader {
             let msg = "Error in CGImageSourceCreateImageAtIndex for \(url.path)"
             logger.error("\(msg)")
             throw Error.noImage
+        }
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            return UIImage(cgImage: cgImage, scale: 1.0, orientation: .up)
         }
         return UIImage(cgImage: cgImage, scale: 1.0, orientation: .right)
     }

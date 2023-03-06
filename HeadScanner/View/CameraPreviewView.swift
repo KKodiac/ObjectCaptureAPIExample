@@ -54,6 +54,12 @@ struct CameraPreviewView: UIViewRepresentable {
         // Set the view's initial state.
         view.backgroundColor = .black
         view.videoPreviewLayer.cornerRadius = 0
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            view.videoPreviewLayer.connection?.videoOrientation = .landscapeRight
+        } else {
+            view.videoPreviewLayer.connection?.videoOrientation = .portrait
+        }
+        
         
         return view
     }

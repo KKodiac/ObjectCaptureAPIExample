@@ -30,9 +30,6 @@ struct CameraView: View {
                     VStack {
                         Spacer()
                         CameraPreviewView(session: model.session)
-//                            .frame(width: UIScreen.main.bounds.width / aspectRatio,
-//                                   height: UIScreen.main.bounds.height / aspectRatio,
-//                                   alignment: .center)
                             .clipShape(RoundedRectangle(cornerRadius: previewCornerRadius))
                             .onAppear { model.startSession() }
                             .onDisappear { model.pauseSession() }
