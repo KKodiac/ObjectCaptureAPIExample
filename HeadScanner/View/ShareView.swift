@@ -12,6 +12,7 @@ private let logger = Logger(subsystem: "com.seanhong.KKodiac.HeadScanner",
                             category: "ShareView")
 struct ShareView: View {
     @State private var isActivityPresented = false
+    
     @ObservedObject var model: CameraViewModel
     @ObservedObject var captureFolderState: CaptureFolderState
     let usingCurrentCaptureFolder: Bool

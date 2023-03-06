@@ -15,8 +15,8 @@ struct CameraView: View {
     @ObservedObject var model: CameraViewModel
     @State private var showInfo: Bool = false
     
-    let aspectRatio: CGFloat = 1.3
-    let previewCornerRadius: CGFloat = 15.0
+    private let aspectRatio: CGFloat = 1.3
+    private let previewCornerRadius: CGFloat = 15.0
     
     var body: some View {
         NavigationStack {
@@ -24,15 +24,15 @@ struct CameraView: View {
                 // Place the CameraPreviewView at the bottom of the stack.
                 ZStack {
                     Color.black.edgesIgnoringSafeArea(.all)
-                    
+                   
                     // Center the preview view vertically. Place a clip frame
                     // around the live preview and round the corners.
                     VStack {
                         Spacer()
                         CameraPreviewView(session: model.session)
-                            .frame(width: UIScreen.main.bounds.width / aspectRatio,
-                                   height: UIScreen.main.bounds.height / aspectRatio,
-                                   alignment: .center)
+//                            .frame(width: UIScreen.main.bounds.width / aspectRatio,
+//                                   height: UIScreen.main.bounds.height / aspectRatio,
+//                                   alignment: .center)
                             .clipShape(RoundedRectangle(cornerRadius: previewCornerRadius))
                             .onAppear { model.startSession() }
                             .onDisappear { model.pauseSession() }
@@ -43,7 +43,6 @@ struct CameraView: View {
                                     .padding(.all))
                         
                     }
-                    
                     VStack {
                         // The app shows this view when showInfo is true.
                         ScanToolbarView(model: model, showInfo: $showInfo).padding(.horizontal)
@@ -134,11 +133,9 @@ struct CaptureButton: View {
     static let outerDiameter: CGFloat = 80
     static let strokeWidth: CGFloat = 4
     static let innerPadding: CGFloat = 10
-    static let innerDiameter: CGFloat = CaptureButton.outerDiameter -
-        CaptureButton.strokeWidth - CaptureButton.innerPadding
+    static let innerDiameter: CGFloat = CaptureButton.outerDiameter - CaptureButton.strokeWidth - CaptureButton.innerPadding
     static let rootTwoOverTwo: CGFloat = CGFloat(2.0.squareRoot() / 2.0)
-    static let squareDiameter: CGFloat = CaptureButton.innerDiameter * CaptureButton.rootTwoOverTwo -
-        CaptureButton.innerPadding
+    static let squareDiameter: CGFloat = CaptureButton.innerDiameter * CaptureButton.rootTwoOverTwo - CaptureButton.innerPadding
     
     @ObservedObject var model: CameraViewModel
     

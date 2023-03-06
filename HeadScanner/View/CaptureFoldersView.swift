@@ -16,6 +16,7 @@ private let logger = Logger(subsystem: "com.seanhong.KKodiac.HeadScanner",
 struct CaptureFoldersView: View {
     @ObservedObject var model: CameraViewModel
     @State var captureFolders: [URL] = []
+    
     private var publisher: AnyPublisher<[URL], Never> {
         CaptureFolderState.requestCaptureFolderListing()
             .receive(on: DispatchQueue.main)
@@ -60,11 +61,11 @@ struct CaptureFoldersView: View {
 }
 
 struct CaptureFolderItem: View {
-    private let thumbnailWidth: CGFloat = 50
-    private let thumbnailHeight: CGFloat = 50
-    
     @ObservedObject private var model: CameraViewModel
     @StateObject private var ownedCaptureFolderState: CaptureFolderState
+    
+    private let thumbnailWidth: CGFloat = 50
+    private let thumbnailHeight: CGFloat = 50
     
     init(model: CameraViewModel, url: URL) {
         self.model = model

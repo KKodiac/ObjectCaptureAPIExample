@@ -17,15 +17,13 @@ struct InfoPanelView: View {
     var body: some View {
         VStack {
             HStack {
-                CameraStatusLabel(enabled: model.isCameraAvailable,
-                                  qualityMode: model.isHighQualityMode)
+                CameraStatusLabel(enabled: model.isCameraAvailable, qualityMode: model.isHighQualityMode)
                     .alignmentGuide(.leading, computeValue: { dimension in
                         dimension.width
                     })
                 Spacer()
                 GravityStatusLabel(enabled: model.isMotionDataEnabled)
-                    .alignmentGuide(HorizontalAlignment.center,
-                                    computeValue: { dimension in dimension.width })
+                    .alignmentGuide(HorizontalAlignment.center, computeValue: { dimension in dimension.width })
                 Spacer()
                 DepthStatusLabel(enabled: model.isDepthDataEnabled)
                     .alignmentGuide(.trailing, computeValue: { dimension in
@@ -66,8 +64,10 @@ struct InfoPanelView: View {
 /// number of photos for a good capture.
 struct CaptureCountProgressBar: View {
     @ObservedObject var model: CameraViewModel
-    let height: CGFloat = 5
-    let recommendedZoneHeight: CGFloat = 10
+    
+    private let height: CGFloat = 5
+    private let recommendedZoneHeight: CGFloat = 10
+    
     static let recommendedZoneColor = Color(red: 0, green: 1, blue: 0, opacity: 0.5)
     static let unfilledProgressColor = Color(red: 1, green: 1, blue: 1, opacity: 0.5)
     

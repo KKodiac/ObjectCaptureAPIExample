@@ -66,7 +66,6 @@
       }
       
       // MARK: - Private Helpers
-      
       private var photoIdString: String {
           return CaptureInfo.photoIdString(for: id)
       }
@@ -146,7 +145,11 @@ struct LiDARCapture {
     var cameraIntrinsics: matrix_float3x3
     var cameraReferenceDimensions: CGSize
     
-    init(depth: MTLTexture? = nil, colorY: MTLTexture? = nil, colorCbCr: MTLTexture? = nil, cameraIntrinsics: matrix_float3x3, cameraReferenceDimensions: CGSize) {
+    init(depth: MTLTexture? = nil,
+         colorY: MTLTexture? = nil,
+         colorCbCr: MTLTexture? = nil,
+         cameraIntrinsics: matrix_float3x3,
+         cameraReferenceDimensions: CGSize) {
         self.depth = depth
         self.colorY = colorY
         self.colorCbCr = colorCbCr

@@ -112,10 +112,10 @@ class CaptureFolderState: ObservableObject {
     
     /// The method returns a URL to the app's documents folder, where it stores all captures.
     static func capturesFolder() -> URL? {
-        guard let documentsFolder =
-                try? FileManager.default.url(for: .documentDirectory,
-                                             in: .userDomainMask,
-                                             appropriateFor: nil, create: false) else {
+        guard let documentsFolder = try? FileManager.default.url(for: .documentDirectory,
+                                                                 in: .userDomainMask,
+                                                                 appropriateFor: nil,
+                                                                 create: false) else {
             return nil
         }
         return documentsFolder.appendingPathComponent("Captures/", isDirectory: true)

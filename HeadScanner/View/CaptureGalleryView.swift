@@ -52,8 +52,7 @@ struct CaptureGalleryView: View {
             Color(red: 0, green: 0, blue: 0.01, opacity: 1).ignoresSafeArea(.all)
             
             // Create a hidden navigation link for the toolbar item.
-            NavigationLink(destination: CaptureFoldersView(model: model),
-                           isActive: self.$showCaptureFolderView) {
+            NavigationLink(destination: CaptureFoldersView(model: model), isActive: self.$showCaptureFolderView) {
                 EmptyView()
             }
             .frame(width: 0, height: 0)

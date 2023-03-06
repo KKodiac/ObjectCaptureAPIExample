@@ -562,26 +562,26 @@ class CameraViewModel: ObservableObject {
         }
         else {
             logger.error("LiDAR depth camera is unavailable")
-            throw SessionSetupError.configurationFailed
+            // Specify dual camera to get access to depth data.
+            if let dualCameraDevice = AVCaptureDevice.default(.builtInDualCamera, for: .video,
+                                                              position: .back) {
+                logger.log(">>> Got back dual camera!")
+                defaultVideoDevice = dualCameraDevice
+            } else if let dualWideCameraDevice = AVCaptureDevice.default(.builtInDualWideCamera,
+                                                                         for: .video,
+                                                                         position: .back) {
+                logger.log(">>> Got back dual wide camera!")
+                defaultVideoDevice = dualWideCameraDevice
+            } else if let backWideCameraDevice = AVCaptureDevice.default(.builtInWideAngleCamera,
+                                                                         for: .video,
+                                                                         position: .back) {
+                logger.log(">>> Can't find a depth-capable camera: using wide back camera!")
+                defaultVideoDevice = backWideCameraDevice
+            } else {
+                throw SessionSetupError.configurationFailed
+            }
         }
-//
-//        // Specify dual camera to get access to depth data.
-//        if let dualCameraDevice = AVCaptureDevice.default(.builtInDualCamera, for: .video,
-//                                                          position: .back) {
-//            logger.log(">>> Got back dual camera!")
-//            defaultVideoDevice = dualCameraDevice
-//        } else if let dualWideCameraDevice = AVCaptureDevice.default(.builtInDualWideCamera,
-//                                                                for: .video,
-//                                                                position: .back) {
-//            logger.log(">>> Got back dual wide camera!")
-//            defaultVideoDevice = dualWideCameraDevice
-//       } else if let backWideCameraDevice = AVCaptureDevice.default(.builtInWideAngleCamera,
-//                                                                     for: .video,
-//                                                                     position: .back) {
-//            logger.log(">>> Can't find a depth-capable camera: using wide back camera!")
-//            defaultVideoDevice = backWideCameraDevice
-//        }
-//
+
         guard let videoDevice = defaultVideoDevice else {
             logger.error("Back video device is unavailable.")
             throw SessionSetupError.configurationFailed
